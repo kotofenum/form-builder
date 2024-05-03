@@ -1,0 +1,16 @@
+.fieldSetting {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  &.reversed {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+}
+
+.label {
+}
+
+.controller {
+}

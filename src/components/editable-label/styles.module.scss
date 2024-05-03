@@ -1,0 +1,48 @@
+.editableLabel {
+  &:hover {
+    .icon:not(.save) {
+      opacity: 1;
+    }
+  }
+}
+
+.labelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.input {
+  border: none;
+  padding: 0;
+  background: none;
+  font-size: inherit;
+  font-weight: 600;
+}
+
+.icon {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  cursor: pointer;
+
+  &.save {
+    opacity: 1;
+    color: greenyellow;
+
+    &:hover {
+      color: darken($color: greenyellow, $amount: 20);
+    }
+  }
+
+  &:hover {
+    color: darken($color: #ffffff, $amount: 20);
+  }
+}

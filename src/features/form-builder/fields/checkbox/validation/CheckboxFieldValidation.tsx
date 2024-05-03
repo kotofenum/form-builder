@@ -27,8 +27,27 @@ export function CheckboxFieldValidation({
       </FieldSetting>
       <FieldSetting label="Min checked">
         <input
+          type="checkbox"
+          onChange={(e) => {
+            if (e.target.checked) {
+              const newValidation = clone(validation); // TODO: optimize
+
+              newValidation.min = 0;
+
+              onValidationUpdate(newValidation);
+            } else {
+              const newValidation = clone(validation); // TODO: optimize
+
+              newValidation.min = null;
+
+              onValidationUpdate(newValidation);
+            }
+          }}
+        />
+        <input
           type="number"
           placeholder="Enter min checked amount"
+          disabled={validation.min === null}
           value={validation.min ?? ""} // TODO: ?
           min={0}
           onChange={(e) => {
@@ -42,8 +61,27 @@ export function CheckboxFieldValidation({
       </FieldSetting>
       <FieldSetting label="Max checked">
         <input
+          type="checkbox"
+          onChange={(e) => {
+            if (e.target.checked) {
+              const newValidation = clone(validation); // TODO: optimize
+
+              newValidation.max = 0;
+
+              onValidationUpdate(newValidation);
+            } else {
+              const newValidation = clone(validation); // TODO: optimize
+
+              newValidation.max = null;
+
+              onValidationUpdate(newValidation);
+            }
+          }}
+        />
+        <input
           type="number"
           placeholder="Enter max checked amount"
+          disabled={validation.max === null}
           value={validation.max ?? ""} // TODO: ?
           onChange={(e) => {
             const newValidation = clone(validation); // TODO: optimize

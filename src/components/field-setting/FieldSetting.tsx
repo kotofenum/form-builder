@@ -12,9 +12,9 @@ export function FieldSetting({
   children,
 }: IFieldSettingProps) {
   return (
-    <label className={cn(css.fieldSetting, reversed && css.reversed)}>
+    <div className={cn(css.fieldSetting, reversed && css.reversed)}>
       <div className={css.label}>{label}</div>
       <div className={css.content}>{children}</div>
-    </label>
+    </div>
   );
 }

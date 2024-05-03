@@ -1,6 +1,6 @@
 import { fieldTypeLabels } from "common/constants";
 import { FieldType } from "common/enums";
-import { IConfig, IField, IValidation } from "common/types";
+import { IField, ISettings, IValidation } from "common/types";
 import { BlockWrapper } from "components/block-wrapper";
 import { EditableLabel } from "components/editable-label";
 import { Switch } from "components/switch";
@@ -16,7 +16,7 @@ interface IFieldProps {
   setLabel: (label: string) => void;
   setType: (type: FieldType) => void;
   onRemove: () => void;
-  onConfigUpdate: (config: IConfig) => void;
+  onSettingsUpdate: (settings: ISettings) => void;
   onValidationUpdate: (validation: IValidation) => void;
 }
 
@@ -27,7 +27,7 @@ export function Field({
   setLabel,
   setType,
   onRemove,
-  onConfigUpdate, // TODO: better use global store
+  onSettingsUpdate,
   onValidationUpdate,
 }: IFieldProps) {
   return (
@@ -35,7 +35,7 @@ export function Field({
       <div className={css.header}>
         <div>#{idx + 1}</div>
         <div className={css.label}>
-          <EditableLabel label={field.config.label} onChange={setLabel} />
+          <EditableLabel label={field.settings.label} onChange={setLabel} />
         </div>
         <button className={css.close} onClick={onRemove}>
           <CloseIcon />
@@ -72,7 +72,7 @@ export function Field({
         </div>
         <div className={css.settings}>
           <BlockWrapper label="Settings">
-            <FieldSettings field={field} onConfigUpdate={onConfigUpdate} />
+            <FieldSettings field={field} onSettingsUpdate={onSettingsUpdate} />
           </BlockWrapper>
         </div>
         <div className={css.validation}>

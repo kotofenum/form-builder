@@ -1,6 +1,6 @@
 import { FieldType } from "./enums";
 
-export interface IFieldConfig {
+export interface IFieldSettings {
   label: string;
 }
 
@@ -11,11 +11,11 @@ export interface IFieldValidation {
 interface IFieldModel {
   type: FieldType;
   name: string;
-  config: IFieldConfig;
+  settings: IFieldSettings;
   validation: IFieldValidation;
 }
 
-export interface ITextFieldConfig extends IFieldConfig {
+export interface ITextFieldSettings extends IFieldSettings {
   placeholder: string;
 }
 
@@ -23,11 +23,11 @@ export interface ITextFieldValidation extends IFieldValidation {}
 
 interface ITextFieldModel extends IFieldModel {
   type: FieldType.Text;
-  config: ITextFieldConfig;
+  settings: ITextFieldSettings;
   validation: ITextFieldValidation;
 }
 
-export interface INumberFieldConfig extends IFieldConfig {
+export interface INumberFieldSettings extends IFieldSettings {
   placeholder: string;
 }
 
@@ -38,12 +38,11 @@ export interface INumberFieldValidation extends IFieldValidation {
 
 interface INumberFieldModel extends IFieldModel {
   type: FieldType.Number;
-  config: INumberFieldConfig;
+  settings: INumberFieldSettings;
   validation: INumberFieldValidation;
 }
 
-export interface ICheckboxFieldConfig extends IFieldConfig {
-  value: boolean;
+export interface ICheckboxFieldSettings extends IFieldSettings {
   options: string[];
 }
 
@@ -54,28 +53,27 @@ export interface ICheckboxFieldValidation extends IFieldValidation {
 
 interface ICheckboxFieldModel extends IFieldModel {
   type: FieldType.Checkbox;
-  config: ICheckboxFieldConfig;
+  settings: ICheckboxFieldSettings;
   validation: ICheckboxFieldValidation;
 }
 
-export interface ISelectFieldConfig extends IFieldConfig {
-  options: string[]; // TODO: not string
-  value: string | null;
+export interface ISelectFieldSettings extends IFieldSettings {
+  options: string[];
 }
 
 export interface ISelectFieldValidation extends IFieldValidation {}
 
 interface ISelectFieldModel extends IFieldModel {
   type: FieldType.Select;
-  config: ISelectFieldConfig;
+  settings: ISelectFieldSettings;
   validation: ISelectFieldValidation;
 }
 
-export type IConfig =
-  | ITextFieldConfig
-  | INumberFieldConfig
-  | ICheckboxFieldConfig
-  | ISelectFieldConfig;
+export type ISettings =
+  | ITextFieldSettings
+  | INumberFieldSettings
+  | ICheckboxFieldSettings
+  | ISelectFieldSettings;
 
 export type IValidation =
   | ITextFieldValidation
@@ -87,9 +85,9 @@ export type IField =
   | ITextFieldModel
   | INumberFieldModel
   | ICheckboxFieldModel
-  | ISelectFieldModel; // TODO: naming
+  | ISelectFieldModel;
 
-export interface IFieldSettingsProps<T extends IConfig> {
-  config: T; // TODO: rename to settings
-  onConfigUpdate: (config: T) => void;
+export interface IFieldSettingsProps<T extends ISettings> {
+  settings: T;
+  onSettingsUpdate: (settings: T) => void;
 }

@@ -18,7 +18,7 @@ export function NumberFieldValidation({
           type="checkbox"
           checked={validation.required}
           onChange={() => {
-            const newValidation = clone(validation); // TODO: optimize
+            const newValidation = clone(validation);
 
             newValidation.required = !newValidation.required;
 
@@ -31,13 +31,13 @@ export function NumberFieldValidation({
           type="checkbox"
           onChange={(e) => {
             if (e.target.checked) {
-              const newValidation = clone(validation); // TODO: optimize
+              const newValidation = clone(validation);
 
               newValidation.min = 0;
 
               onValidationUpdate(newValidation);
             } else {
-              const newValidation = clone(validation); // TODO: optimize
+              const newValidation = clone(validation);
 
               newValidation.min = null;
 
@@ -49,11 +49,11 @@ export function NumberFieldValidation({
           type="number"
           placeholder="Enter min value"
           disabled={validation.min === null}
-          value={validation.min ?? ""} // TODO: ?
+          value={validation.min ?? ""}
           onChange={(e) => {
-            const newValidation = clone(validation); // TODO: optimize
+            const newValidation = clone(validation);
 
-            newValidation.min = Number(e.target.value); // TODO: check for undefined
+            newValidation.min = Number(e.target.value);
 
             onValidationUpdate(newValidation);
           }}
@@ -64,13 +64,13 @@ export function NumberFieldValidation({
           type="checkbox"
           onChange={(e) => {
             if (e.target.checked) {
-              const newValidation = clone(validation); // TODO: optimize
+              const newValidation = clone(validation);
 
               newValidation.max = 0;
 
               onValidationUpdate(newValidation);
             } else {
-              const newValidation = clone(validation); // TODO: optimize
+              const newValidation = clone(validation);
 
               newValidation.max = null;
 
@@ -82,11 +82,11 @@ export function NumberFieldValidation({
           type="number"
           placeholder="Enter max value"
           disabled={validation.max === null}
-          value={validation.max ?? ""} // TODO: ?
+          value={validation.max ?? ""}
           onChange={(e) => {
-            const newValidation = clone(validation); // TODO: optimize
+            const newValidation = clone(validation);
 
-            newValidation.max = Number(e.target.value); // TODO: check for undefined
+            newValidation.max = Number(e.target.value);
 
             onValidationUpdate(newValidation);
           }}

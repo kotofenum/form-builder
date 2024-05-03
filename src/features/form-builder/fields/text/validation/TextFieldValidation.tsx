@@ -18,7 +18,7 @@ export function TextFieldValidation({
           type="checkbox"
           checked={validation.required}
           onChange={() => {
-            const newValidation = clone(validation); // TODO: optimize
+            const newValidation = clone(validation);
 
             newValidation.required = !newValidation.required;
 

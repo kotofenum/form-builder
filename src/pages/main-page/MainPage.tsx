@@ -1,7 +1,7 @@
 import cn from "classnames";
-import { defaultConfig, defaultValidation } from "common/constants";
+import { defaultSettings, defaultValidation } from "common/constants";
 import { FieldType } from "common/enums";
-import { IField, IFieldConfig, IFieldValidation } from "common/types";
+import { IField, ISettings, IValidation } from "common/types";
 import { Field } from "features/field";
 import { FormJson } from "features/form-json";
 import { FormPreview } from "features/form-preview";
@@ -17,7 +17,7 @@ export function MainPage() {
     const field: IField = {
       type: FieldType.Text,
       name: "",
-      config: defaultConfig[FieldType.Text],
+      settings: defaultSettings[FieldType.Text],
       validation: defaultValidation[FieldType.Text],
     };
 
@@ -52,7 +52,7 @@ export function MainPage() {
     (fieldIdx: number, label: string) => {
       const field = clone(fields[fieldIdx]);
 
-      field.config.label = label;
+      field.settings.label = label;
 
       replaceField(fieldIdx, field);
     },
@@ -64,9 +64,8 @@ export function MainPage() {
       const field = clone(fields[fieldIdx]);
 
       field.type = type;
-      field.config = defaultConfig[type];
+      field.settings = defaultSettings[type];
       field.validation = defaultValidation[type];
-      // TODO: reset config to defaults (with prompt?)
 
       replaceField(fieldIdx, field);
     },
@@ -80,11 +79,11 @@ export function MainPage() {
     [fields]
   );
 
-  const handleConfigUpdate = React.useCallback(
-    (fieldIdx: number, config: IFieldConfig) => {
+  const handleSettingsUpdate = React.useCallback(
+    (fieldIdx: number, settings: ISettings) => {
       const field = clone(fields[fieldIdx]);
 
-      field.config = config as any; // TODO: fix typings
+      field.settings = settings;
 
       replaceField(fieldIdx, field);
     },
@@ -92,10 +91,10 @@ export function MainPage() {
   );
 
   const handleValidationUpdate = React.useCallback(
-    (fieldIdx: number, validation: IFieldValidation) => {
+    (fieldIdx: number, validation: IValidation) => {
       const field = clone(fields[fieldIdx]);
 
-      field.validation = validation as any;
+      field.validation = validation;
 
       replaceField(fieldIdx, field);
     },
@@ -112,7 +111,6 @@ export function MainPage() {
         <div className={css.section}>
           <div className={css.form}>
             {fields.map((field, idx) => (
-              // TODO: use id instead of idx?
               <Field
                 key={idx}
                 idx={idx}
@@ -121,13 +119,15 @@ export function MainPage() {
                 setLabel={(label) => updateLabel(idx, label)}
                 setType={(type) => updateType(idx, type)}
                 onRemove={() => handleRemove(idx)}
-                onConfigUpdate={(config) => handleConfigUpdate(idx, config)}
+                onSettingsUpdate={(settings) =>
+                  handleSettingsUpdate(idx, settings)
+                }
                 onValidationUpdate={(validation) => {
                   handleValidationUpdate(idx, validation);
                 }}
               />
             ))}
-            {/* TODO: add empty message */}
+            {fields.length === 0 && <span>No fields added yet.</span>}
             <button type="button" className={css.add} onClick={handleAdd}>
               +
             </button>

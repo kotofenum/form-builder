@@ -1,24 +1,24 @@
-import { IFieldSettingsProps, ITextFieldConfig } from "common/types";
+import { IFieldSettingsProps, ITextFieldSettings } from "common/types";
 import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
 
 export function TextFieldSettings({
-  config,
-  onConfigUpdate,
-}: IFieldSettingsProps<ITextFieldConfig>) {
+  settings,
+  onSettingsUpdate,
+}: IFieldSettingsProps<ITextFieldSettings>) {
   return (
     <>
       <FieldSetting label="Placeholder value">
         <input
           type="text"
           placeholder="Enter placeholder value"
-          value={config.placeholder}
+          value={settings.placeholder}
           onChange={(e) => {
-            const newConfig = clone(config); // TODO: optimize
+            const newSettings = clone(settings);
 
-            newConfig.placeholder = e.target.value;
+            newSettings.placeholder = e.target.value;
 
-            onConfigUpdate(newConfig);
+            onSettingsUpdate(newSettings);
           }}
         />
       </FieldSetting>

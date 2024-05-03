@@ -1,31 +1,30 @@
-import { ICheckboxFieldConfig, IFieldSettingsProps } from "common/types";
+import { ICheckboxFieldSettings, IFieldSettingsProps } from "common/types";
 import { FieldOptions } from "components/field-options";
 import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
 
 export function CheckboxFieldSettings({
-  config,
-  onConfigUpdate,
-}: IFieldSettingsProps<ICheckboxFieldConfig>) {
-  // TODO: CheckboxGroup
+  settings,
+  onSettingsUpdate,
+}: IFieldSettingsProps<ICheckboxFieldSettings>) {
   return (
     <>
       <FieldSetting label="Options">
         <FieldOptions
-          options={config.options}
+          options={settings.options}
           onAdd={(value) => {
-            const newConfig = clone(config); // TODO: optimize
+            const newSettings = clone(settings);
 
-            newConfig.options.push(value);
+            newSettings.options.push(value);
 
-            onConfigUpdate(newConfig);
+            onSettingsUpdate(newSettings);
           }}
           onUpdate={(idx, value) => {
-            const newConfig = clone(config); // TODO: optimize
+            const newSettings = clone(settings);
 
-            newConfig.options[idx] = value;
+            newSettings.options[idx] = value;
 
-            onConfigUpdate(newConfig);
+            onSettingsUpdate(newSettings);
           }}
         />
       </FieldSetting>

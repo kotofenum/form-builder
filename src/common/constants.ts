@@ -1,12 +1,12 @@
 import { FieldType } from "./enums";
 import {
-  ICheckboxFieldConfig,
+  ICheckboxFieldSettings,
   ICheckboxFieldValidation,
-  INumberFieldConfig,
+  INumberFieldSettings,
   INumberFieldValidation,
-  ISelectFieldConfig,
+  ISelectFieldSettings,
   ISelectFieldValidation,
-  ITextFieldConfig,
+  ITextFieldSettings,
   ITextFieldValidation,
 } from "./types";
 
@@ -17,23 +17,23 @@ export const fieldTypeLabels: Record<FieldType, string> = {
   [FieldType.Select]: "Select",
 };
 
-export const defaultConfig = {
+export const defaultSettings = {
   [FieldType.Text]: {
     label: "New text field",
     placeholder: "Enter text here",
-  } as ITextFieldConfig, // TODO: do without casting
+  } as ITextFieldSettings,
   [FieldType.Number]: {
     label: "New number field",
     placeholder: "Enter number here",
-  } as INumberFieldConfig,
+  } as INumberFieldSettings,
   [FieldType.Checkbox]: {
     label: "New checkbox group field",
     options: ["Option 1"],
-  } as ICheckboxFieldConfig,
+  } as ICheckboxFieldSettings,
   [FieldType.Select]: {
     label: "New select group field",
     options: ["Option 1"],
-  } as ISelectFieldConfig,
+  } as ISelectFieldSettings,
 };
 
 export const defaultValidation = {

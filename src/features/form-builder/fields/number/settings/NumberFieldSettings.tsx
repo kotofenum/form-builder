@@ -1,24 +1,24 @@
-import { IFieldSettingsProps, INumberFieldConfig } from "common/types";
+import { IFieldSettingsProps, INumberFieldSettings } from "common/types";
 import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
 
 export function NumberFieldSettings({
-  config,
-  onConfigUpdate,
-}: IFieldSettingsProps<INumberFieldConfig>) {
+  settings,
+  onSettingsUpdate,
+}: IFieldSettingsProps<INumberFieldSettings>) {
   return (
     <>
       <FieldSetting label="Placeholder value">
         <input
           type="text"
           placeholder="Enter placeholder value"
-          value={config.placeholder}
+          value={settings.placeholder}
           onChange={(e) => {
-            const newConfig = clone(config); // TODO: optimize
+            const newSettings = clone(settings);
 
-            newConfig.placeholder = e.target.value;
+            newSettings.placeholder = e.target.value;
 
-            onConfigUpdate(newConfig);
+            onSettingsUpdate(newSettings);
           }}
         />
       </FieldSetting>

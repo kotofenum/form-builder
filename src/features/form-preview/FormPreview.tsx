@@ -34,23 +34,23 @@ export function FormPreview({ fields, onSubmit }: IFormPreviewProps) {
             <Form.Item
               key={idx}
               name={field.name}
-              label={field.config.label}
+              label={field.settings.label}
               rules={getRulesForField(field)}
             >
               {field.type === FieldType.Text && (
-                <Input placeholder={field.config.placeholder} />
+                <Input placeholder={field.settings.placeholder} />
               )}
               {field.type === FieldType.Number && (
-                <InputNumber placeholder={field.config.placeholder} />
+                <InputNumber placeholder={field.settings.placeholder} />
               )}
               {field.type === FieldType.Checkbox && (
                 <Checkbox.Group
-                  options={Array.from(new Set(field.config.options))}
+                  options={Array.from(new Set(field.settings.options))}
                 />
               )}
               {field.type === FieldType.Select && (
                 <Select
-                  options={Array.from(new Set(field.config.options)).map(
+                  options={Array.from(new Set(field.settings.options)).map(
                     (option) => ({
                       label: option,
                       value: option,

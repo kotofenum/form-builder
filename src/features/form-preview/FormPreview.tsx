@@ -4,7 +4,6 @@ import {
   Checkbox,
   Flex,
   Form,
-  FormRule,
   Input,
   InputNumber,
   Select,
@@ -12,56 +11,13 @@ import {
 } from "antd";
 import { FieldType } from "common/enums";
 import { IField } from "common/types";
+import { getRulesForField } from "common/utils";
 import css from "./styles.module.scss";
 
 interface IFormPreviewProps {
   fields: IField[];
   onSubmit: (data: object) => void;
 }
-
-const getRulesForField = (field: IField): FormRule[] => {
-  // TODO: move to utils
-  const genericRules: FormRule[] = [{ required: field.validation.required }];
-
-  switch (field.type) {
-    case FieldType.Text: {
-      const specificRules: FormRule[] = [];
-
-      return [...genericRules, ...specificRules];
-    }
-    case FieldType.Number: {
-      const specificRules: FormRule[] = [];
-
-      if (field.validation.min) {
-        specificRules.push({ type: "number", min: field.validation.min });
-      }
-
-      if (field.validation.max) {
-        specificRules.push({ type: "number", max: field.validation.max });
-      }
-
-      return [...genericRules, ...specificRules];
-    }
-    case FieldType.Checkbox: {
-      const specificRules: FormRule[] = [];
-
-      if (field.validation.min) {
-        specificRules.push({ min: field.validation.min });
-      }
-
-      if (field.validation.max) {
-        specificRules.push({ max: field.validation.max });
-      }
-
-      return [...genericRules, ...specificRules];
-    }
-    case FieldType.Select: {
-      const specificRules: FormRule[] = [];
-
-      return [...genericRules, ...specificRules];
-    }
-  }
-};
 
 export function FormPreview({ fields, onSubmit }: IFormPreviewProps) {
   const [form] = Form.useForm();

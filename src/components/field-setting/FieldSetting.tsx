@@ -11,11 +11,10 @@ export function FieldSetting({
   reversed = false,
   children,
 }: IFieldSettingProps) {
-  // TODO: rename css.controller
   return (
     <label className={cn(css.fieldSetting, reversed && css.reversed)}>
       <div className={css.label}>{label}</div>
-      <div className={css.controller}>{children}</div>
+      <div className={css.content}>{children}</div>
     </label>
   );
 }

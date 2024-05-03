@@ -104,39 +104,40 @@ function App() {
 
   return (
     <div className={css.app}>
-      <div className={cn(css.section, css.sticky)}>
-        <FormJson data={fields} />
-      </div>
-      <div className={css.section}>
-        {/* <div className={css.heading}>Form Builder</div> */}
-        <div className={css.form}>
-          {fields.map((field, idx) => (
-            // TODO: use id instead of idx?
-            <Field
-              //  TODO: rename to field
-              key={idx}
-              idx={idx}
-              field={field}
-              setName={(name) => updateName(idx, name)}
-              setLabel={(label) => updateLabel(idx, label)}
-              setType={(type) => updateType(idx, type)}
-              onRemove={() => handleRemove(idx)}
-              onConfigUpdate={(config) => handleConfigUpdate(idx, config)}
-              onValidationUpdate={(validation) => {
-                handleValidationUpdate(idx, validation);
-              }}
-            />
-          ))}
-          {/* TODO: add empty message */}
-          <button type="button" className={css.add} onClick={handleAdd}>
-            +
-          </button>
+      <div className={css.heading}>Form Builder</div>
+      <div className={css.main}>
+        <div className={cn(css.section, css.sticky)}>
+          <FormJson data={fields} />
         </div>
-      </div>
-      <div className={cn(css.section, css.sticky)}>
-        <div>
-          <FormPreview fields={fields} onSubmit={setSubmitData} />
-          {submitData && <FormJson data={submitData} />}
+        <div className={css.section}>
+          <div className={css.form}>
+            {fields.map((field, idx) => (
+              // TODO: use id instead of idx?
+              <Field
+                key={idx}
+                idx={idx}
+                field={field}
+                setName={(name) => updateName(idx, name)}
+                setLabel={(label) => updateLabel(idx, label)}
+                setType={(type) => updateType(idx, type)}
+                onRemove={() => handleRemove(idx)}
+                onConfigUpdate={(config) => handleConfigUpdate(idx, config)}
+                onValidationUpdate={(validation) => {
+                  handleValidationUpdate(idx, validation);
+                }}
+              />
+            ))}
+            {/* TODO: add empty message */}
+            <button type="button" className={css.add} onClick={handleAdd}>
+              +
+            </button>
+          </div>
+        </div>
+        <div className={cn(css.section, css.sticky)}>
+          <div>
+            <FormPreview fields={fields} onSubmit={setSubmitData} />
+            {submitData && <FormJson data={submitData} />}
+          </div>
         </div>
       </div>
     </div>

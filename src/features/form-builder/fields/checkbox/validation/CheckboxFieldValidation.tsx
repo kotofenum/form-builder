@@ -25,11 +25,12 @@ export function CheckboxFieldValidation({
           }}
         />
       </FieldSetting>
-      <FieldSetting label="Min value">
+      <FieldSetting label="Min checked">
         <input
           type="number"
-          placeholder="Enter min value"
+          placeholder="Enter min checked amount"
           value={validation.min ?? ""} // TODO: ?
+          min={0}
           onChange={(e) => {
             const newValidation = clone(validation); // TODO: optimize
 
@@ -39,10 +40,10 @@ export function CheckboxFieldValidation({
           }}
         />
       </FieldSetting>
-      <FieldSetting label="Max value">
+      <FieldSetting label="Max checked">
         <input
           type="number"
-          placeholder="Enter max value"
+          placeholder="Enter max checked amount"
           value={validation.max ?? ""} // TODO: ?
           onChange={(e) => {
             const newValidation = clone(validation); // TODO: optimize

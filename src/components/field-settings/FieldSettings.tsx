@@ -11,7 +11,6 @@ interface IFieldSettingsProps {
 }
 
 export function FieldSettings({ field, onConfigUpdate }: IFieldSettingsProps) {
-  // TODO: rename to field settings
   switch (
     field.type // TODO: maybe switch not needed, just a generic component with same props?
   ) {

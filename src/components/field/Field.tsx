@@ -30,8 +30,6 @@ export function Field({
   onConfigUpdate, // TODO: maybe use global store
   onValidationUpdate,
 }: IFieldProps) {
-  // TODO: rename to field
-
   return (
     <div className={css.field}>
       <div className={css.header}>

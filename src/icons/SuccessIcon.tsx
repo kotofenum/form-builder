@@ -1,6 +1,6 @@
-export function SuccessIcon() {
+export function SuccessIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg enable-background="new 0 0 48 48" viewBox="0 0 48 48">
+    <svg enable-background="new 0 0 48 48" viewBox="0 0 48 48" {...props}>
       <g id="Layer_3">
         <polygon
           fill="currentColor"

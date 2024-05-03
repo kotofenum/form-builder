@@ -1,6 +1,6 @@
+import { ITextInputConfig } from "common/types";
+import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
-import { ITextInputConfig } from "../../../../../App";
-import { FieldSetting } from "../../../../../components/field-setting";
 
 interface ITextFieldSettingsProps {
   config: ITextInputConfig;

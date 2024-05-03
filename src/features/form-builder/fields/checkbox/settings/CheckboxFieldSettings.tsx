@@ -1,7 +1,7 @@
+import { ICheckboxInputConfig } from "common/types";
+import { FieldSetting } from "components/field-setting";
+import { InputOptions } from "components/input-options";
 import { clone } from "ramda";
-import { ICheckboxInputConfig } from "../../../../../App";
-import { FieldSetting } from "../../../../../components/field-setting";
-import { InputOptions } from "../../../../../components/input-options";
 
 interface ICheckboxFieldSettingsProps {
   config: ICheckboxInputConfig;

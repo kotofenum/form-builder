@@ -1,7 +1,7 @@
 import cn from "classnames";
+import { EditIcon } from "icons/EditIcon";
+import { SuccessIcon } from "icons/SuccessIcon";
 import React from "react";
-import { EditIcon } from "../../icons/EditIcon";
-import { SuccessIcon } from "../../icons/SuccessIcon";
 import css from "./styles.module.scss";
 
 interface IEditableLabelProps {

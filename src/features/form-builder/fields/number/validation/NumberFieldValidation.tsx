@@ -1,6 +1,6 @@
+import { INumberFieldValidation } from "common/types";
+import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
-import { INumberFieldValidation } from "../../../../../App";
-import { FieldSetting } from "../../../../../components/field-setting";
 
 interface INumberFieldValidationProps {
   validation: INumberFieldValidation;

@@ -1,8 +1,9 @@
-import { IInput, IInputConfig, InputType } from "../../App";
-import { CheckboxFieldSettings } from "../../features/form-builder/fields/checkbox/settings";
-import { NumberFieldSettings } from "../../features/form-builder/fields/number/settings";
-import { SelectFieldSettings } from "../../features/form-builder/fields/select/settings";
-import { TextFieldSettings } from "../../features/form-builder/fields/text/settings";
+import { InputType } from "common/enums";
+import { IInput, IInputConfig } from "common/types";
+import { CheckboxFieldSettings } from "features/form-builder/fields/checkbox/settings";
+import { NumberFieldSettings } from "features/form-builder/fields/number/settings";
+import { SelectFieldSettings } from "features/form-builder/fields/select/settings";
+import { TextFieldSettings } from "features/form-builder/fields/text/settings";
 
 interface IInputSettingsProps {
   field: IInput;

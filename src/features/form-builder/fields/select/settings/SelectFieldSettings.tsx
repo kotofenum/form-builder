@@ -1,7 +1,7 @@
+import { ISelectInputConfig } from "common/types";
+import { FieldSetting } from "components/field-setting";
+import { InputOptions } from "components/input-options";
 import { clone } from "ramda";
-import { ISelectInputConfig } from "../../../../../App";
-import { FieldSetting } from "../../../../../components/field-setting";
-import { InputOptions } from "../../../../../components/input-options";
 
 interface ISelectFieldSettingsProps {
   config: ISelectInputConfig;

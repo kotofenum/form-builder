@@ -1,6 +1,6 @@
+import { ISelectFieldValidation } from "common/types";
+import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
-import { ISelectFieldValidation } from "../../../../../App";
-import { FieldSetting } from "../../../../../components/field-setting";
 
 interface ISelectFieldValidationProps {
   validation: ISelectFieldValidation;

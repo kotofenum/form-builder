@@ -1,157 +1,13 @@
 import cn from "classnames";
+import { defaultConfig, defaultValidation } from "common/constants";
+import { InputType } from "common/enums";
+import { IFieldValidation, IInput, IInputConfig } from "common/types";
+import { Input } from "components/input";
+import { FormJson } from "features/form-json";
+import { FormPreview } from "features/form-preview";
 import { clone } from "ramda";
 import React from "react";
 import css from "./App.module.scss";
-import { Input } from "./components/input";
-import { FormJson } from "./features/form-json/FormJson";
-import { FormPreview } from "./features/form-preview";
-
-export enum InputType {
-  Text = "text",
-  Number = "number",
-  Checkbox = "checkbox",
-  Select = "select",
-}
-
-export const inputTypeLabels: Record<InputType, string> = {
-  [InputType.Text]: "Text",
-  [InputType.Number]: "Number",
-  [InputType.Checkbox]: "Checkbox",
-  [InputType.Select]: "Select",
-};
-
-export interface IInputConfig {
-  label: string;
-}
-
-export interface IFieldValidation {
-  required: boolean;
-}
-
-interface IInputModel {
-  type: InputType;
-  name: string;
-  config: IInputConfig;
-  validation: IFieldValidation;
-}
-
-export interface ITextInputConfig extends IInputConfig {
-  placeholder: string;
-  value: string; // TODO: remove
-}
-
-export interface ITextFieldValidation extends IFieldValidation {}
-
-interface ITextInputModel extends IInputModel {
-  type: InputType.Text;
-  config: ITextInputConfig;
-  validation: ITextFieldValidation;
-}
-
-export interface INumberInputConfig extends IInputConfig {
-  placeholder: string;
-  value: number; // TODO: remove
-  min: number | null; // TODO: remove
-  max: number | null; // TODO: remove
-}
-
-export interface INumberFieldValidation extends IFieldValidation {
-  min: number | null;
-  max: number | null;
-}
-
-interface INumberInputModel extends IInputModel {
-  type: InputType.Number;
-  config: INumberInputConfig;
-  validation: INumberFieldValidation;
-}
-
-export interface ICheckboxInputConfig extends IInputConfig {
-  value: boolean;
-  options: string[];
-}
-
-export interface ICheckboxFieldValidation extends IFieldValidation {
-  min: number | null;
-  max: number | null;
-}
-
-interface ICheckboxInputModel extends IInputModel {
-  type: InputType.Checkbox;
-  config: ICheckboxInputConfig;
-  validation: ICheckboxFieldValidation;
-}
-
-export interface ISelectInputConfig extends IInputConfig {
-  options: string[]; // TODO: not string
-  value: string | null;
-}
-
-export interface ISelectFieldValidation extends IFieldValidation {}
-
-interface ISelectInputModel extends IInputModel {
-  type: InputType.Select;
-  config: ISelectInputConfig;
-  validation: ISelectFieldValidation;
-}
-
-type IConfig =
-  | ITextInputConfig
-  | INumberInputConfig
-  | ICheckboxInputConfig
-  | ISelectInputConfig;
-
-export type IValidation =
-  | ITextFieldValidation
-  | INumberFieldValidation
-  | ICheckboxFieldValidation
-  | ISelectFieldValidation;
-
-export type IInput =
-  | ITextInputModel
-  | INumberInputModel
-  | ICheckboxInputModel
-  | ISelectInputModel; // TODO: naming
-
-const defaultConfig = {
-  [InputType.Text]: {
-    label: "New text field",
-    placeholder: "Enter text here",
-  } as ITextInputConfig,
-  [InputType.Number]: {
-    label: "New number field",
-    placeholder: "Enter number here",
-    min: null,
-    max: null,
-  } as INumberInputConfig,
-  [InputType.Checkbox]: {
-    label: "New checkbox group field",
-    options: ["Option 1"],
-  } as ICheckboxInputConfig,
-  [InputType.Select]: {
-    label: "New select group field",
-    options: ["Option 1"],
-  } as ISelectInputConfig,
-};
-
-const defaultValidation = {
-  [InputType.Text]: {
-    required: false,
-  } as ITextFieldValidation,
-  [InputType.Number]: {
-    required: false,
-    min: null,
-    max: null,
-  } as INumberFieldValidation,
-  [InputType.Checkbox]: {
-    required: false,
-    min: null,
-    max: null,
-  } as ICheckboxFieldValidation,
-  [InputType.Select]: {
-    required: false,
-  } as ISelectFieldValidation,
-};
 
 function App() {
   const [fields, setFields] = React.useState<IInput[]>([]);
@@ -257,6 +113,7 @@ function App() {
           {fields.map((field, idx) => (
             // TODO: use id instead of idx?
             <Input
+              //  TODO: rename to field
               key={idx}
               idx={idx}
               field={field}

@@ -1,8 +1,9 @@
-import { IFieldValidation, IInput, InputType } from "../../App";
-import { CheckboxFieldValidation } from "../../features/form-builder/fields/checkbox/validation";
-import { NumberFieldValidation } from "../../features/form-builder/fields/number/validation";
-import { SelectFieldValidation } from "../../features/form-builder/fields/select/validation";
-import { TextFieldValidation } from "../../features/form-builder/fields/text/validation";
+import { InputType } from "common/enums";
+import { IFieldValidation, IInput } from "common/types";
+import { CheckboxFieldValidation } from "features/form-builder/fields/checkbox/validation";
+import { NumberFieldValidation } from "features/form-builder/fields/number/validation";
+import { SelectFieldValidation } from "features/form-builder/fields/select/validation";
+import { TextFieldValidation } from "features/form-builder/fields/text/validation";
 
 interface IFieldValidationProps {
   field: IInput;

@@ -10,7 +10,8 @@ import {
   Select,
   Typography,
 } from "antd";
-import { IInput, InputType } from "../../App";
+import { InputType } from "common/enums";
+import { IInput } from "common/types";
 import css from "./styles.module.scss";
 
 interface IFormPreviewProps {

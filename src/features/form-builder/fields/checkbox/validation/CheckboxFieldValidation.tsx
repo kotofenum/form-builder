@@ -1,7 +1,6 @@
+import { ICheckboxFieldValidation } from "common/types";
+import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
-import { ICheckboxFieldValidation } from "../../../../../App";
-import { FieldSetting } from "../../../../../components/field-setting";
-
 interface ICheckboxFieldValidationProps {
   validation: ICheckboxFieldValidation;
   onValidationUpdate: (validation: ICheckboxFieldValidation) => void;

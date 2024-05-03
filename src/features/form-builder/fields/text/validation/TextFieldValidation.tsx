@@ -1,6 +1,6 @@
+import { ITextFieldValidation } from "common/types";
+import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
-import { ITextFieldValidation } from "../../../../../App";
-import { FieldSetting } from "../../../../../components/field-setting";
 
 interface ITextFieldValidationProps {
   validation: ITextFieldValidation;

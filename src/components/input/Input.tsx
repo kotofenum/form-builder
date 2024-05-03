@@ -1,16 +1,12 @@
-import {
-  IFieldValidation,
-  IInput,
-  IInputConfig,
-  InputType,
-  inputTypeLabels,
-} from "../../App";
-import { CloseIcon } from "../../icons/CloseIcon";
-import { BlockWrapper } from "../block-wrapper";
-import { EditableLabel } from "../editable-label";
-import { FieldValidation } from "../field-validation";
-import { InputSettings } from "../input-settings/InputSettings";
-import { Switch } from "../switch";
+import { inputTypeLabels } from "common/constants";
+import { InputType } from "common/enums";
+import { IFieldValidation, IInput, IInputConfig } from "common/types";
+import { BlockWrapper } from "components/block-wrapper";
+import { EditableLabel } from "components/editable-label";
+import { FieldValidation } from "components/field-validation";
+import { InputSettings } from "components/input-settings";
+import { Switch } from "components/switch";
+import { CloseIcon } from "icons/CloseIcon";
 import css from "./styles.module.scss";
 
 interface IInputProps {

@@ -1,11 +1,11 @@
-import { ISelectInputConfig } from "common/types";
+import { ISelectFieldConfig } from "common/types";
+import { FieldOptions } from "components/field-options";
 import { FieldSetting } from "components/field-setting";
-import { InputOptions } from "components/input-options";
 import { clone } from "ramda";
 
 interface ISelectFieldSettingsProps {
-  config: ISelectInputConfig;
-  onConfigUpdate: (config: ISelectInputConfig) => void;
+  config: ISelectFieldConfig;
+  onConfigUpdate: (config: ISelectFieldConfig) => void;
 }
 
 export function SelectFieldSettings({
@@ -15,7 +15,7 @@ export function SelectFieldSettings({
   return (
     <>
       <FieldSetting label="Options">
-        <InputOptions
+        <FieldOptions
           options={config.options}
           onAdd={(value) => {
             const newConfig = clone(config); // TODO: optimize

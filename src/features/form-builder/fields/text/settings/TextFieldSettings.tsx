@@ -1,10 +1,10 @@
-import { ITextInputConfig } from "common/types";
+import { ITextFieldConfig } from "common/types";
 import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
 
 interface ITextFieldSettingsProps {
-  config: ITextInputConfig;
-  onConfigUpdate: (config: ITextInputConfig) => void;
+  config: ITextFieldConfig;
+  onConfigUpdate: (config: ITextFieldConfig) => void;
 }
 
 export function TextFieldSettings({

@@ -10,26 +10,26 @@ import {
   Select,
   Typography,
 } from "antd";
-import { InputType } from "common/enums";
-import { IInput } from "common/types";
+import { FieldType } from "common/enums";
+import { IField } from "common/types";
 import css from "./styles.module.scss";
 
 interface IFormPreviewProps {
-  fields: IInput[];
+  fields: IField[];
   onSubmit: (data: object) => void;
 }
 
-const getRulesForField = (field: IInput): FormRule[] => {
+const getRulesForField = (field: IField): FormRule[] => {
   // TODO: move to utils
   const genericRules: FormRule[] = [{ required: field.validation.required }];
 
   switch (field.type) {
-    case InputType.Text: {
+    case FieldType.Text: {
       const specificRules: FormRule[] = [];
 
       return [...genericRules, ...specificRules];
     }
-    case InputType.Number: {
+    case FieldType.Number: {
       const specificRules: FormRule[] = [];
 
       if (field.validation.min) {
@@ -42,7 +42,7 @@ const getRulesForField = (field: IInput): FormRule[] => {
 
       return [...genericRules, ...specificRules];
     }
-    case InputType.Checkbox: {
+    case FieldType.Checkbox: {
       const specificRules: FormRule[] = [];
 
       if (field.validation.min) {
@@ -55,7 +55,7 @@ const getRulesForField = (field: IInput): FormRule[] => {
 
       return [...genericRules, ...specificRules];
     }
-    case InputType.Select: {
+    case FieldType.Select: {
       const specificRules: FormRule[] = [];
 
       return [...genericRules, ...specificRules];
@@ -81,18 +81,18 @@ export function FormPreview({ fields, onSubmit }: IFormPreviewProps) {
               label={field.config.label}
               rules={getRulesForField(field)}
             >
-              {field.type === InputType.Text && (
+              {field.type === FieldType.Text && (
                 <Input placeholder={field.config.placeholder} />
               )}
-              {field.type === InputType.Number && (
+              {field.type === FieldType.Number && (
                 <InputNumber placeholder={field.config.placeholder} />
               )}
-              {field.type === InputType.Checkbox && (
+              {field.type === FieldType.Checkbox && (
                 <Checkbox.Group
                   options={Array.from(new Set(field.config.options))}
                 />
               )}
-              {field.type === InputType.Select && (
+              {field.type === FieldType.Select && (
                 <Select
                   options={Array.from(new Set(field.config.options)).map(
                     (option) => ({

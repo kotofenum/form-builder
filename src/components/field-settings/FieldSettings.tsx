@@ -1,42 +1,42 @@
-import { InputType } from "common/enums";
-import { IInput, IInputConfig } from "common/types";
+import { FieldType } from "common/enums";
+import { IField, IFieldConfig } from "common/types";
 import { CheckboxFieldSettings } from "features/form-builder/fields/checkbox/settings";
 import { NumberFieldSettings } from "features/form-builder/fields/number/settings";
 import { SelectFieldSettings } from "features/form-builder/fields/select/settings";
 import { TextFieldSettings } from "features/form-builder/fields/text/settings";
 
-interface IInputSettingsProps {
-  field: IInput;
-  onConfigUpdate: (config: IInputConfig) => void;
+interface IFieldSettingsProps {
+  field: IField;
+  onConfigUpdate: (config: IFieldConfig) => void;
 }
 
-export function InputSettings({ field, onConfigUpdate }: IInputSettingsProps) {
+export function FieldSettings({ field, onConfigUpdate }: IFieldSettingsProps) {
   // TODO: rename to field settings
   switch (
     field.type // TODO: maybe switch not needed, just a generic component with same props?
   ) {
-    case InputType.Text:
+    case FieldType.Text:
       return (
         <TextFieldSettings
           config={field.config}
           onConfigUpdate={onConfigUpdate}
         />
       );
-    case InputType.Number:
+    case FieldType.Number:
       return (
         <NumberFieldSettings
           config={field.config}
           onConfigUpdate={onConfigUpdate}
         />
       );
-    case InputType.Checkbox:
+    case FieldType.Checkbox:
       return (
         <CheckboxFieldSettings
           config={field.config}
           onConfigUpdate={onConfigUpdate}
         />
       );
-    case InputType.Select:
+    case FieldType.Select:
       return (
         <SelectFieldSettings
           config={field.config}

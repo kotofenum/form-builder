@@ -1,8 +1,8 @@
 import cn from "classnames";
 import { defaultConfig, defaultValidation } from "common/constants";
-import { InputType } from "common/enums";
-import { IFieldValidation, IInput, IInputConfig } from "common/types";
-import { Input } from "components/input";
+import { FieldType } from "common/enums";
+import { IField, IFieldConfig, IFieldValidation } from "common/types";
+import { Field } from "components/field";
 import { FormJson } from "features/form-json";
 import { FormPreview } from "features/form-preview";
 import { clone } from "ramda";
@@ -10,22 +10,22 @@ import React from "react";
 import css from "./App.module.scss";
 
 function App() {
-  const [fields, setFields] = React.useState<IInput[]>([]);
+  const [fields, setFields] = React.useState<IField[]>([]);
   const [submitData, setSubmitData] = React.useState<object | null>(null);
 
   const handleAdd = React.useCallback(() => {
-    const field: IInput = {
-      type: InputType.Text,
+    const field: IField = {
+      type: FieldType.Text,
       name: "",
-      config: defaultConfig[InputType.Text],
-      validation: defaultValidation[InputType.Text],
+      config: defaultConfig[FieldType.Text],
+      validation: defaultValidation[FieldType.Text],
     };
 
     setFields([...fields, field]);
   }, [fields]);
 
   const replaceField = React.useCallback(
-    (fieldIdx: number, field: IInput) => {
+    (fieldIdx: number, field: IField) => {
       const newFields = [
         ...fields.slice(0, fieldIdx),
         field,
@@ -60,7 +60,7 @@ function App() {
   );
 
   const updateType = React.useCallback(
-    (fieldIdx: number, type: InputType) => {
+    (fieldIdx: number, type: FieldType) => {
       const field = clone(fields[fieldIdx]);
 
       field.type = type;
@@ -81,7 +81,7 @@ function App() {
   );
 
   const handleConfigUpdate = React.useCallback(
-    (fieldIdx: number, config: IInputConfig) => {
+    (fieldIdx: number, config: IFieldConfig) => {
       const field = clone(fields[fieldIdx]);
 
       field.config = config as any; // TODO: fix typings
@@ -112,7 +112,7 @@ function App() {
         <div className={css.form}>
           {fields.map((field, idx) => (
             // TODO: use id instead of idx?
-            <Input
+            <Field
               //  TODO: rename to field
               key={idx}
               idx={idx}

@@ -1,10 +1,10 @@
-import { INumberInputConfig } from "common/types";
+import { INumberFieldConfig } from "common/types";
 import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
 
 interface INumberFieldSettingsProps {
-  config: INumberInputConfig;
-  onConfigUpdate: (config: INumberInputConfig) => void;
+  config: INumberFieldConfig;
+  onConfigUpdate: (config: INumberFieldConfig) => void;
 }
 
 export function NumberFieldSettings({

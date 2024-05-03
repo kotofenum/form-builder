@@ -1,6 +1,6 @@
-import { InputType } from "./enums";
+import { FieldType } from "./enums";
 
-export interface IInputConfig {
+export interface IFieldConfig {
   label: string;
 }
 
@@ -8,26 +8,26 @@ export interface IFieldValidation {
   required: boolean;
 }
 
-interface IInputModel {
-  type: InputType;
+interface IFieldModel {
+  type: FieldType;
   name: string;
-  config: IInputConfig;
+  config: IFieldConfig;
   validation: IFieldValidation;
 }
 
-export interface ITextInputConfig extends IInputConfig {
+export interface ITextFieldConfig extends IFieldConfig {
   placeholder: string;
 }
 
 export interface ITextFieldValidation extends IFieldValidation {}
 
-interface ITextInputModel extends IInputModel {
-  type: InputType.Text;
-  config: ITextInputConfig;
+interface ITextFieldModel extends IFieldModel {
+  type: FieldType.Text;
+  config: ITextFieldConfig;
   validation: ITextFieldValidation;
 }
 
-export interface INumberInputConfig extends IInputConfig {
+export interface INumberFieldConfig extends IFieldConfig {
   placeholder: string;
 }
 
@@ -36,13 +36,13 @@ export interface INumberFieldValidation extends IFieldValidation {
   max: number | null;
 }
 
-interface INumberInputModel extends IInputModel {
-  type: InputType.Number;
-  config: INumberInputConfig;
+interface INumberFieldModel extends IFieldModel {
+  type: FieldType.Number;
+  config: INumberFieldConfig;
   validation: INumberFieldValidation;
 }
 
-export interface ICheckboxInputConfig extends IInputConfig {
+export interface ICheckboxFieldConfig extends IFieldConfig {
   value: boolean;
   options: string[];
 }
@@ -52,30 +52,30 @@ export interface ICheckboxFieldValidation extends IFieldValidation {
   max: number | null;
 }
 
-interface ICheckboxInputModel extends IInputModel {
-  type: InputType.Checkbox;
-  config: ICheckboxInputConfig;
+interface ICheckboxFieldModel extends IFieldModel {
+  type: FieldType.Checkbox;
+  config: ICheckboxFieldConfig;
   validation: ICheckboxFieldValidation;
 }
 
-export interface ISelectInputConfig extends IInputConfig {
+export interface ISelectFieldConfig extends IFieldConfig {
   options: string[]; // TODO: not string
   value: string | null;
 }
 
 export interface ISelectFieldValidation extends IFieldValidation {}
 
-interface ISelectInputModel extends IInputModel {
-  type: InputType.Select;
-  config: ISelectInputConfig;
+interface ISelectFieldModel extends IFieldModel {
+  type: FieldType.Select;
+  config: ISelectFieldConfig;
   validation: ISelectFieldValidation;
 }
 
 type IConfig =
-  | ITextInputConfig
-  | INumberInputConfig
-  | ICheckboxInputConfig
-  | ISelectInputConfig;
+  | ITextFieldConfig
+  | INumberFieldConfig
+  | ICheckboxFieldConfig
+  | ISelectFieldConfig;
 
 export type IValidation =
   | ITextFieldValidation
@@ -83,8 +83,8 @@ export type IValidation =
   | ICheckboxFieldValidation
   | ISelectFieldValidation;
 
-export type IInput =
-  | ITextInputModel
-  | INumberInputModel
-  | ICheckboxInputModel
-  | ISelectInputModel; // TODO: naming
+export type IField =
+  | ITextFieldModel
+  | INumberFieldModel
+  | ICheckboxFieldModel
+  | ISelectFieldModel; // TODO: naming

@@ -1,4 +1,4 @@
-export enum InputType {
+export enum FieldType {
   Text = "text",
   Number = "number",
   Checkbox = "checkbox",

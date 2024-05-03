@@ -1,11 +1,11 @@
-import { ICheckboxInputConfig } from "common/types";
+import { ICheckboxFieldConfig } from "common/types";
+import { FieldOptions } from "components/field-options";
 import { FieldSetting } from "components/field-setting";
-import { InputOptions } from "components/input-options";
 import { clone } from "ramda";
 
 interface ICheckboxFieldSettingsProps {
-  config: ICheckboxInputConfig;
-  onConfigUpdate: (config: ICheckboxInputConfig) => void;
+  config: ICheckboxFieldConfig;
+  onConfigUpdate: (config: ICheckboxFieldConfig) => void;
 }
 
 export function CheckboxFieldSettings({
@@ -16,7 +16,7 @@ export function CheckboxFieldSettings({
   return (
     <>
       <FieldSetting label="Options">
-        <InputOptions
+        <FieldOptions
           options={config.options}
           onAdd={(value) => {
             const newConfig = clone(config); // TODO: optimize

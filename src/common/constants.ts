@@ -1,56 +1,56 @@
-import { InputType } from "./enums";
+import { FieldType } from "./enums";
 import {
+  ICheckboxFieldConfig,
   ICheckboxFieldValidation,
-  ICheckboxInputConfig,
+  INumberFieldConfig,
   INumberFieldValidation,
-  INumberInputConfig,
+  ISelectFieldConfig,
   ISelectFieldValidation,
-  ISelectInputConfig,
+  ITextFieldConfig,
   ITextFieldValidation,
-  ITextInputConfig,
 } from "./types";
 
-export const inputTypeLabels: Record<InputType, string> = {
-  [InputType.Text]: "Text",
-  [InputType.Number]: "Number",
-  [InputType.Checkbox]: "Checkbox",
-  [InputType.Select]: "Select",
+export const fieldTypeLabels: Record<FieldType, string> = {
+  [FieldType.Text]: "Text",
+  [FieldType.Number]: "Number",
+  [FieldType.Checkbox]: "Checkbox",
+  [FieldType.Select]: "Select",
 };
 
 export const defaultConfig = {
-  [InputType.Text]: {
+  [FieldType.Text]: {
     label: "New text field",
     placeholder: "Enter text here",
-  } as ITextInputConfig, // TODO: do without casting
-  [InputType.Number]: {
+  } as ITextFieldConfig, // TODO: do without casting
+  [FieldType.Number]: {
     label: "New number field",
     placeholder: "Enter number here",
-  } as INumberInputConfig,
-  [InputType.Checkbox]: {
+  } as INumberFieldConfig,
+  [FieldType.Checkbox]: {
     label: "New checkbox group field",
     options: ["Option 1"],
-  } as ICheckboxInputConfig,
-  [InputType.Select]: {
+  } as ICheckboxFieldConfig,
+  [FieldType.Select]: {
     label: "New select group field",
     options: ["Option 1"],
-  } as ISelectInputConfig,
+  } as ISelectFieldConfig,
 };
 
 export const defaultValidation = {
-  [InputType.Text]: {
+  [FieldType.Text]: {
     required: false,
   } as ITextFieldValidation,
-  [InputType.Number]: {
+  [FieldType.Number]: {
     required: false,
     min: null,
     max: null,
   } as INumberFieldValidation,
-  [InputType.Checkbox]: {
+  [FieldType.Checkbox]: {
     required: false,
     min: null,
     max: null,
   } as ICheckboxFieldValidation,
-  [InputType.Select]: {
+  [FieldType.Select]: {
     required: false,
   } as ISelectFieldValidation,
 };

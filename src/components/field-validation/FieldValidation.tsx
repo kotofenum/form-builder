@@ -1,12 +1,12 @@
-import { InputType } from "common/enums";
-import { IFieldValidation, IInput } from "common/types";
+import { FieldType } from "common/enums";
+import { IField, IFieldValidation } from "common/types";
 import { CheckboxFieldValidation } from "features/form-builder/fields/checkbox/validation";
 import { NumberFieldValidation } from "features/form-builder/fields/number/validation";
 import { SelectFieldValidation } from "features/form-builder/fields/select/validation";
 import { TextFieldValidation } from "features/form-builder/fields/text/validation";
 
 interface IFieldValidationProps {
-  field: IInput;
+  field: IField;
   onValidationUpdate: (config: IFieldValidation) => void;
 }
 
@@ -17,28 +17,28 @@ export function FieldValidation({
   switch (
     field.type // TODO: maybe switch not needed, just a generic component with same props?
   ) {
-    case InputType.Text:
+    case FieldType.Text:
       return (
         <TextFieldValidation
           validation={field.validation}
           onValidationUpdate={onValidationUpdate}
         />
       );
-    case InputType.Number:
+    case FieldType.Number:
       return (
         <NumberFieldValidation
           validation={field.validation}
           onValidationUpdate={onValidationUpdate}
         />
       );
-    case InputType.Checkbox:
+    case FieldType.Checkbox:
       return (
         <CheckboxFieldValidation
           validation={field.validation}
           onValidationUpdate={onValidationUpdate}
         />
       );
-    case InputType.Select:
+    case FieldType.Select:
       return (
         <SelectFieldValidation
           validation={field.validation}

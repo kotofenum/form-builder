@@ -1,26 +1,26 @@
-import { inputTypeLabels } from "common/constants";
-import { InputType } from "common/enums";
-import { IFieldValidation, IInput, IInputConfig } from "common/types";
+import { fieldTypeLabels } from "common/constants";
+import { FieldType } from "common/enums";
+import { IField, IFieldConfig, IFieldValidation } from "common/types";
 import { BlockWrapper } from "components/block-wrapper";
 import { EditableLabel } from "components/editable-label";
+import { FieldSettings } from "components/field-settings";
 import { FieldValidation } from "components/field-validation";
-import { InputSettings } from "components/input-settings";
 import { Switch } from "components/switch";
 import { CloseIcon } from "icons/CloseIcon";
 import css from "./styles.module.scss";
 
-interface IInputProps {
+interface IFieldProps {
   idx: number;
-  field: IInput;
+  field: IField;
   setName: (name: string) => void;
   setLabel: (label: string) => void;
-  setType: (type: InputType) => void;
+  setType: (type: FieldType) => void;
   onRemove: () => void;
-  onConfigUpdate: (config: IInputConfig) => void;
+  onConfigUpdate: (config: IFieldConfig) => void;
   onValidationUpdate: (validation: IFieldValidation) => void;
 }
 
-export function Input({
+export function Field({
   idx,
   field,
   setName,
@@ -29,11 +29,11 @@ export function Input({
   onRemove,
   onConfigUpdate, // TODO: maybe use global store
   onValidationUpdate,
-}: IInputProps) {
+}: IFieldProps) {
   // TODO: rename to field
 
   return (
-    <div className={css.input}>
+    <div className={css.field}>
       <div className={css.header}>
         <div>#{idx + 1}</div>
         <div className={css.label}>
@@ -57,29 +57,29 @@ export function Input({
           Field type:
           <Switch
             options={[
-              InputType.Text,
-              InputType.Number,
-              InputType.Checkbox,
-              InputType.Select,
+              FieldType.Text,
+              FieldType.Number,
+              FieldType.Checkbox,
+              FieldType.Select,
             ]}
             labels={[
-              inputTypeLabels[InputType.Text],
-              inputTypeLabels[InputType.Number],
-              inputTypeLabels[InputType.Checkbox],
-              inputTypeLabels[InputType.Select],
+              fieldTypeLabels[FieldType.Text],
+              fieldTypeLabels[FieldType.Number],
+              fieldTypeLabels[FieldType.Checkbox],
+              fieldTypeLabels[FieldType.Select],
             ]}
             selectedOption={field.type}
             onSelect={setType}
           />
         </div>
         <div className={css.settings}>
-          <BlockWrapper label={`${inputTypeLabels[field.type]} field settings`}>
-            <InputSettings field={field} onConfigUpdate={onConfigUpdate} />
+          <BlockWrapper label={`${fieldTypeLabels[field.type]} field settings`}>
+            <FieldSettings field={field} onConfigUpdate={onConfigUpdate} />
           </BlockWrapper>
         </div>
         <div className={css.validation}>
           <BlockWrapper
-            label={`${inputTypeLabels[field.type]} field validation`}
+            label={`${fieldTypeLabels[field.type]} field validation`}
           >
             <FieldValidation
               field={field}

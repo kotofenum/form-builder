@@ -1,14 +1,14 @@
 import css from "./styles.module.scss";
 
-interface IInputOptionsProps {
+interface IFieldOptionsProps {
   options: string[];
   onAdd: (value: string) => void;
   onUpdate: (optionIdx: number, value: string) => void;
 }
 
-export function InputOptions({ options, onAdd, onUpdate }: IInputOptionsProps) {
+export function FieldOptions({ options, onAdd, onUpdate }: IFieldOptionsProps) {
   return (
-    <div className={css.inputOptions}>
+    <div className={css.fieldOptions}>
       {options.map((option, idx) => (
         <input
           key={idx}

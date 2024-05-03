@@ -1,17 +1,12 @@
-import { ICheckboxFieldConfig } from "common/types";
+import { ICheckboxFieldConfig, IFieldSettingsProps } from "common/types";
 import { FieldOptions } from "components/field-options";
 import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
 
-interface ICheckboxFieldSettingsProps {
-  config: ICheckboxFieldConfig;
-  onConfigUpdate: (config: ICheckboxFieldConfig) => void;
-}
-
 export function CheckboxFieldSettings({
   config,
   onConfigUpdate,
-}: ICheckboxFieldSettingsProps) {
+}: IFieldSettingsProps<ICheckboxFieldConfig>) {
   // TODO: CheckboxGroup
   return (
     <>

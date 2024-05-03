@@ -1,16 +1,11 @@
-import { INumberFieldConfig } from "common/types";
+import { IFieldSettingsProps, INumberFieldConfig } from "common/types";
 import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
-
-interface INumberFieldSettingsProps {
-  config: INumberFieldConfig;
-  onConfigUpdate: (config: INumberFieldConfig) => void;
-}
 
 export function NumberFieldSettings({
   config,
   onConfigUpdate,
-}: INumberFieldSettingsProps) {
+}: IFieldSettingsProps<INumberFieldConfig>) {
   return (
     <>
       <FieldSetting label="Placeholder value">

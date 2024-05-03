@@ -71,7 +71,7 @@ interface ISelectFieldModel extends IFieldModel {
   validation: ISelectFieldValidation;
 }
 
-type IConfig =
+export type IConfig =
   | ITextFieldConfig
   | INumberFieldConfig
   | ICheckboxFieldConfig
@@ -88,3 +88,8 @@ export type IField =
   | INumberFieldModel
   | ICheckboxFieldModel
   | ISelectFieldModel; // TODO: naming
+
+export interface IFieldSettingsProps<T extends IConfig> {
+  config: T; // TODO: rename to settings
+  onConfigUpdate: (config: T) => void;
+}

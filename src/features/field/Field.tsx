@@ -1,11 +1,11 @@
 import { fieldTypeLabels } from "common/constants";
 import { FieldType } from "common/enums";
-import { IField, IFieldConfig, IFieldValidation } from "common/types";
+import { IConfig, IField, IValidation } from "common/types";
 import { BlockWrapper } from "components/block-wrapper";
 import { EditableLabel } from "components/editable-label";
-import { FieldSettings } from "components/field-settings";
-import { FieldValidation } from "components/field-validation";
 import { Switch } from "components/switch";
+import { FieldSettings } from "features/form-builder/settings";
+import { FieldValidation } from "features/form-builder/validation";
 import { CloseIcon } from "icons/CloseIcon";
 import css from "./styles.module.scss";
 
@@ -16,8 +16,8 @@ interface IFieldProps {
   setLabel: (label: string) => void;
   setType: (type: FieldType) => void;
   onRemove: () => void;
-  onConfigUpdate: (config: IFieldConfig) => void;
-  onValidationUpdate: (validation: IFieldValidation) => void;
+  onConfigUpdate: (config: IConfig) => void;
+  onValidationUpdate: (validation: IValidation) => void;
 }
 
 export function Field({
@@ -27,7 +27,7 @@ export function Field({
   setLabel,
   setType,
   onRemove,
-  onConfigUpdate, // TODO: maybe use global store
+  onConfigUpdate, // TODO: better use global store
   onValidationUpdate,
 }: IFieldProps) {
   return (
@@ -71,14 +71,12 @@ export function Field({
           />
         </div>
         <div className={css.settings}>
-          <BlockWrapper label={`${fieldTypeLabels[field.type]} field settings`}>
+          <BlockWrapper label="Settings">
             <FieldSettings field={field} onConfigUpdate={onConfigUpdate} />
           </BlockWrapper>
         </div>
         <div className={css.validation}>
-          <BlockWrapper
-            label={`${fieldTypeLabels[field.type]} field validation`}
-          >
+          <BlockWrapper label="Validation">
             <FieldValidation
               field={field}
               onValidationUpdate={onValidationUpdate}

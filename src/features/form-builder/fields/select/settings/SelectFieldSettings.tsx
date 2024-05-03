@@ -1,17 +1,12 @@
-import { ISelectFieldConfig } from "common/types";
+import { IFieldSettingsProps, ISelectFieldConfig } from "common/types";
 import { FieldOptions } from "components/field-options";
 import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
 
-interface ISelectFieldSettingsProps {
-  config: ISelectFieldConfig;
-  onConfigUpdate: (config: ISelectFieldConfig) => void;
-}
-
 export function SelectFieldSettings({
   config,
   onConfigUpdate,
-}: ISelectFieldSettingsProps) {
+}: IFieldSettingsProps<ISelectFieldConfig>) {
   return (
     <>
       <FieldSetting label="Options">

@@ -1,16 +1,11 @@
-import { ITextFieldConfig } from "common/types";
+import { IFieldSettingsProps, ITextFieldConfig } from "common/types";
 import { FieldSetting } from "components/field-setting";
 import { clone } from "ramda";
-
-interface ITextFieldSettingsProps {
-  config: ITextFieldConfig;
-  onConfigUpdate: (config: ITextFieldConfig) => void;
-}
 
 export function TextFieldSettings({
   config,
   onConfigUpdate,
-}: ITextFieldSettingsProps) {
+}: IFieldSettingsProps<ITextFieldConfig>) {
   return (
     <>
       <FieldSetting label="Placeholder value">
